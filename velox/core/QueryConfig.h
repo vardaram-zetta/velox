@@ -716,6 +716,9 @@ class QueryConfig {
   static constexpr const char* kRowSizeTrackingEnabled =
       "row_size_tracking_enabled";
 
+  static constexpr const char* kSkipIntegerUpCastsForHashJoin =
+      "skip_integer_upcasts_for_hash_join";
+
   bool selectiveNimbleReaderEnabled() const {
     return get<bool>(kSelectiveNimbleReaderEnabled, false);
   }
@@ -1289,6 +1292,10 @@ class QueryConfig {
 
   std::string clientTags() const {
     return get<std::string>(kClientTags, "");
+  }
+
+  bool skipIntegerUpcastsForHashJoinEnabled() const {
+    return get<bool>(kSkipIntegerUpCastsForHashJoin, false);
   }
 
   template <typename T>
